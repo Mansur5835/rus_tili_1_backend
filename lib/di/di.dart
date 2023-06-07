@@ -4,7 +4,7 @@ import 'package:jaguar/jaguar.dart';
 import 'package:rus_tili_1_back/constants/paths.dart';
 import 'package:rus_tili_1_back/di/get_it.dart';
 import 'package:rus_tili_1_back/domen/api_req.dart';
-import 'package:rus_tili_1_back/routes/get_user.dart';
+import 'package:rus_tili_1_back/routes/core_router.dart.dart';
 import 'package:rus_tili_1_back/utils/file_utils.i.dart';
 
 final getIt = GetIt.instance;
@@ -21,10 +21,8 @@ abstract class DI {
 
     getIt.singelton(AppServer(getIt.get()));
 
-    getIt.singelton(GetUserRoute(getIt.get(), getIt.get()));
+    getIt.singelton(CoreRouter(getIt.get(), getIt.get()));
 
-    server.serve().then((value) {
-      print("localhost:8080");
-    });
+    server.serve().then((value) {});
   }
 }
