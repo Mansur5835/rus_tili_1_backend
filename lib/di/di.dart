@@ -8,10 +8,12 @@ import 'package:rus_tili_1_back/routes/core_router.dart.dart';
 import 'package:rus_tili_1_back/utils/file_utils.i.dart';
 
 final getIt = GetIt.instance;
-final server = Jaguar();
 
 abstract class DI {
-  static init() {
+  static init() async {
+    final server = Jaguar(
+        address: "0.0.0.0",
+        port: int.parse(Platform.environment["PORT"] ?? "8080"));
     getIt.singelton(server);
     getIt.singelton(Directory.current);
 
